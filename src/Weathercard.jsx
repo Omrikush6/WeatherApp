@@ -26,10 +26,10 @@ const getWeatherIcon = (iconName) => {
         className="weather-icon" 
       />
       <div className="weather-info">
-        <h3>Day {index + 1}</h3>
+      <h3>{new Date(dayData.datetime).toLocaleDateString('en-US', { weekday: 'long' })}</h3>
         <p>Date: {dayData.datetime}</p>
         <p>Temperature: {dayData.temp}°C</p>
-        <p>Description: {dayData.icon}</p>
+        <p>Description: {dayData.description}</p>
       </div>
     </div>
   );
