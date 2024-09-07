@@ -3,7 +3,7 @@ import './App.css';
 import WeatherCard from './Weathercard'; 
 
 function App() {
-  const [days, settdays] = useState(1);
+  const [days, settdays] = useState(3);
   const [weatherdata, setweatherdata] = useState([]);
   const divRef = useRef(null);
 
@@ -11,12 +11,11 @@ function App() {
     const fetchWeatherData = async () => {
       const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tel%20aviv/next${days}days?unitGroup=metric&key=8KFS28APX968P5DFR6JRHBKD7&contentType=json`);
       const data = await response.json();
-      setweatherdata((prevData) => [...prevData, ...data.days]);
+      setweatherdata(data.days);
     };
-
+  
     fetchWeatherData();
   }, [days]);
-
   useEffect(() => {
     const handleScroll = () => {
       const div = divRef.current;
@@ -41,7 +40,7 @@ function App() {
     <>
       <div
         ref={divRef}
-        style={{ height: '400px', overflow: 'auto', border: '1px solid black', padding: '10px' }}
+        style={{ height: '400px', overflowY: 'auto', border: '1px solid black', padding: '10px'}}
       >
         {
           weatherdata.length > 0 ?
