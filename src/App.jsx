@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const fetchWeatherData = async () => {
-      const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tel%20aviv/next${days}days?unitGroup=metric&key=M8Z4G2UABKA5UV3DZV39AEVT2&contentType=json`);
+      const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tel%20aviv/next${days}days?unitGroup=metric&key=<YOUR-API-KEY>&contentType=json`);
       const data = await response.json();
       setweatherdata(data.days);
     };
